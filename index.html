@@ -477,6 +477,77 @@ body > h1::before {
     display: none;
   }
 }
+  /* SDG tile headings with official icons */
+
+.sdg-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 96px;
+  padding: 14px 18px;
+  color: white;
+}
+
+.sdg-heading img {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.sdg-heading span {
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+/* Official goal colours */
+
+.sdg-box:nth-child(1) .sdg-heading {
+  background: #e5243b;
+}
+
+.sdg-box:nth-child(2) .sdg-heading {
+  background: #dda63a;
+}
+
+.sdg-box:nth-child(3) .sdg-heading {
+  background: #4c9f38;
+}
+
+.sdg-box:nth-child(4) .sdg-heading {
+  background: #c5192d;
+}
+
+.sdg-box:nth-child(5) .sdg-heading {
+  background: #ff3a21;
+}
+
+.sdg-box:nth-child(6) .sdg-heading {
+  background: #26bde2;
+}
+
+.sdg-box:nth-child(7) .sdg-heading {
+  background: #bf8b2e;
+}
+
+@media (max-width: 900px) {
+  .sdg-heading {
+    min-height: 78px;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .sdg-heading img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .sdg-heading span {
+    font-size: 0.92rem;
+  }
+}
 </style>
 </head>
 
@@ -515,37 +586,59 @@ body > h1::before {
   <div class="sdg-grid">
 
     <section class="sdg-box">
-      <h2>SDG 1: No Poverty</h2>
-      <div class="drop-zone" data-sdg="1"></div>
-    </section>
+  <div class="sdg-heading">
+    <img src="sdg-1.png" alt="SDG 1: No Poverty">
+    <span>SDG 1: No Poverty</span>
+  </div>
+
+  <div class="drop-zone" data-sdg="1"></div>
+</section>
 
     <section class="sdg-box">
-      <h2>SDG 2: Zero Hunger</h2>
+      <div class="sdg-heading">
+  <img src="sdg-2.png" alt="SDG 2: Zero Hunger">
+  <span>SDG 2: Zero Hunger</span>
+</div>
       <div class="drop-zone" data-sdg="2"></div>
     </section>
 
     <section class="sdg-box">
-      <h2>SDG 3: Good Health and Wellbeing</h2>
+      <div class="sdg-heading">
+  <img src="sdg-3.png" alt="SDG 3: Good Health and Wellbeing">
+  <span>SDG 3: Good Health and Wellbeing</span>
+</div>
       <div class="drop-zone" data-sdg="3"></div>
     </section>
 
     <section class="sdg-box">
-      <h2>SDG 4: Quality Education</h2>
+      <div class="sdg-heading">
+  <img src="sdg-4.png" alt="SDG 4: Quality Education">
+  <span>SDG 4: Quality Education</span>
+</div>
       <div class="drop-zone" data-sdg="4"></div>
     </section>
 
     <section class="sdg-box">
-      <h2>SDG 5: Gender Equality</h2>
+      <div class="sdg-heading">
+  <img src="sdg-5.png" alt="SDG 5: Gender Equality">
+  <span>SDG 5: Gender Equality</span>
+</div>
       <div class="drop-zone" data-sdg="5"></div>
     </section>
 
     <section class="sdg-box">
-      <h2>SDG 6: Clean Water and Sanitation</h2>
+      <div class="sdg-heading">
+  <img src="sdg-6.png" alt="SDG 6: Clean Water and Sanitation">
+  <span>SDG 6: Clean Water and Sanitation</span>
+</div>
       <div class="drop-zone" data-sdg="6"></div>
     </section>
 
     <section class="sdg-box">
-      <h2>SDG 12: Responsible Consumption and Production</h2>
+      <div class="sdg-heading">
+  <img src="sdg-6.png" alt="SDG 6: Clean Water and Sanitation">
+  <span>SDG 6: Clean Water and Sanitation</span>
+</div>
       <div class="drop-zone" data-sdg="12"></div>
     </section>
 
