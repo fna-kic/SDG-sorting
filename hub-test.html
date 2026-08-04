@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>VCE HHD Interactive Learning Hub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fa;
+      color: #243247;
+    }
+
+    header {
+      padding: 60px 24px;
+      background: #183153;
+      color: white;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 14px;
+      font-size: 2.8rem;
+    }
+
+    header p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    main {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 50px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: #5d6875;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .activity-card {
+      display: flex;
+      flex-direction: column;
+      padding: 26px;
+      background: white;
+      border: 1px solid #dce3ea;
+      border-radius: 16px;
+    }
+
+    .activity-card h3 {
+      margin: 12px 0 8px;
+      font-size: 1.35rem;
+    }
+
+    .activity-card p {
+      line-height: 1.55;
+      color: #4d5967;
+    }
+
+    .activity-label {
+      align-self: flex-start;
+      padding: 6px 10px;
+      background: #e7f0ff;
+      color: #174d8c;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .activity-button {
+      display: block;
+      margin-top: auto;
+      padding: 12px 16px;
+      background: #1769aa;
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .activity-button:hover {
+      background: #10568d;
+    }
+
+    .coming-soon {
+      opacity: 0.75;
+    }
+
+    .coming-soon-button {
+      display: block;
+      margin-top: auto;
+      padding: 12px 16px;
+      background: #e8ecf0;
+      color: #687482;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 24px;
+      background: #e6ebf0;
+      text-align: center;
+      color: #596575;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>VCE HHD Interactive Learning Hub</h1>
+
+    <p>
+      Interactive activities to help students revise the Sustainable
+      Development Goals and their relationships with health and human
+      development.
+    </p>
+  </header>
+
+  <main>
+
+    <section class="section-heading">
+      <h2>Sustainable Development Goals</h2>
+
+      <p>
+        Practise the reasons, key features and relationships associated
+        with SDGs 1–6 and 12.
+      </p>
+    </section>
+
+    <section class="activity-grid">
+
+      <article class="activity-card">
+        <span class="activity-label">Card sort</span>
+
+        <h3>SDG Key Features</h3>
+
+        <p>
+          Sort the key features into the correct Sustainable Development
+          Goals.
+        </p>
+
+        <a href="index.html" class="activity-button">
+          Start activity
+        </a>
+      </article>
+
+      <article class="activity-card coming-soon">
+        <span class="activity-label">Matching</span>
+
+        <h3>SDG Mix and Match</h3>
+
+        <p>
+          Match each goal with its reason, key features and progress
+          statistic.
+        </p>
+
+        <span class="coming-soon-button">
+          Coming soon
+        </span>
+      </article>
+
+      <article class="activity-card coming-soon">
+        <span class="activity-label">Flashcards</span>
+
+        <h3>SDG Flashcards</h3>
+
+        <p>
+          Retrieve the names, reasons, features and statistics associated
+          with each goal.
+        </p>
+
+        <span class="coming-soon-button">
+          Coming soon
+        </span>
+      </article>
+
+      <article class="activity-card coming-soon">
+        <span class="activity-label">Quiz</span>
+
+        <h3>Which SDG?</h3>
+
+        <p>
+          Identify the correct SDG using clues from its key features.
+        </p>
+
+        <span class="coming-soon-button">
+          Coming soon
+        </span>
+      </article>
+
+      <article class="activity-card coming-soon">
+        <span class="activity-label">Connections</span>
+
+        <h3>Connections to SDG 3</h3>
+
+        <p>
+          Explore how the other prescribed goals contribute to good
+          health and wellbeing.
+        </p>
+
+        <span class="coming-soon-button">
+          Coming soon
+        </span>
+      </article>
+
+      <article class="activity-card coming-soon">
+        <span class="activity-label">Application</span>
+
+        <h3>SDGs in Action</h3>
+
+        <p>
+          Apply your knowledge of the goals to short health and
+          development case studies.
+        </p>
+
+        <span class="coming-soon-button">
+          Coming soon
+        </span>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer>
+    VCE Health and Human Development
+  </footer>
+
+</body>
+
+</html>
