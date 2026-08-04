@@ -325,6 +325,67 @@
       margin: 6px 0;
     }
   }
+  /* Click-to-place card selection */
+
+.feature.selected {
+  border: 3px solid #245eea;
+  border-left: 8px solid #245eea;
+  background: #eaf1ff;
+  box-shadow: 0 0 0 4px rgba(36, 94, 234, 0.16);
+  transform: translateY(-2px);
+}
+
+.sdg-box:has(.drop-zone:hover) {
+  outline: 3px solid rgba(36, 94, 234, 0.35);
+}
+
+.sdg-box .drop-zone {
+  cursor: pointer;
+}
+
+.sdg-box .drop-zone:hover {
+  background: #f1f6ff;
+}
+
+@media (max-width: 900px) {
+  body > h1 {
+    font-size: 3rem;
+    padding-top: 26px;
+  }
+
+  .instructions {
+    padding-bottom: 22px;
+  }
+
+  #feature-bank {
+    padding: 14px;
+    gap: 9px;
+  }
+
+  .feature {
+    flex-basis: 220px;
+    padding: 12px 14px;
+    font-size: 0.92rem;
+  }
+
+  .sdg-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .sdg-box {
+    min-height: 230px;
+  }
+
+  .drop-zone {
+    min-height: 155px;
+    padding: 10px;
+  }
+
+  .sdg-box .drop-zone:empty::before {
+    min-height: 125px;
+  }
+}
 </style>
 </head>
 
@@ -485,6 +546,7 @@
 
     const featureBank = document.getElementById("feature-bank");
     const feedback = document.getElementById("feedback");
+    let selectedCard = null;
 
     function shuffle(array) {
       return [...array].sort(() => Math.random() - 0.5);
@@ -513,11 +575,32 @@
       feedback.textContent = "";
     }
 
-    function addDragEvents(card) {
-      card.addEventListener("dragstart", event => {
-        event.dataTransfer.setData("text/plain", card.id);
-      });
+function addDragEvents(card) {
+  card.addEventListener("dragstart", event => {
+    event.dataTransfer.setData("text/plain", card.id);
+  });
+
+  card.addEventListener("click", event => {
+    event.stopPropagation();
+
+    if (selectedCard === card) {
+      card.classList.remove("selected");
+      selectedCard = null;
+      feedback.textContent = "";
+      return;
     }
+
+    if (selectedCard) {
+      selectedCard.classList.remove("selected");
+    }
+
+    selectedCard = card;
+    selectedCard.classList.add("selected");
+
+    feedback.textContent =
+      "Card selected. Now click the SDG box where you want to place it.";
+  });
+}
 
     document.querySelectorAll(".drop-zone").forEach(zone => {
       zone.addEventListener("dragover", event => {
@@ -541,6 +624,22 @@
           zone.appendChild(card);
         }
       });
+      zone.addEventListener("click", event => {
+  if (!selectedCard) {
+    return;
+  }
+
+  if (event.target.closest(".feature")) {
+    return;
+  }
+
+  selectedCard.classList.remove("selected", "correct", "incorrect");
+  zone.appendChild(selectedCard);
+
+  selectedCard = null;
+  feedback.textContent =
+    "Card placed. Select another card, or check your answers.";
+});
     });
 
     document.getElementById("check-button").addEventListener("click", () => {
