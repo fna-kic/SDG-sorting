@@ -6,118 +6,326 @@
 
   <title>SDG Feature Sort</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 24px;
-      background: #f4f6f8;
-      color: #222;
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --navy: #17233a;
+    --blue: #245eea;
+    --light-blue: #eef4ff;
+    --page-background: #edf3fb;
+    --card-background: #ffffff;
+    --muted-text: #5f6f85;
+    --border: #d7e1f1;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+      radial-gradient(circle at top left, #dfeaff 0, transparent 32%),
+      var(--page-background);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  body > h1 {
+    max-width: 1500px;
+    margin: 28px auto 0;
+    padding: 42px 48px 12px;
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--navy);
+  }
+
+  body > h1::before {
+    content: "SDG RETRIEVAL PRACTICE";
+    display: block;
+    margin-bottom: 16px;
+    color: var(--blue);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+  }
+
+  .instructions {
+    max-width: 1500px;
+    margin: 0 auto 28px;
+    padding: 0 48px 38px;
+    color: var(--muted-text);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  body > h2 {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 48px 14px;
+    color: var(--navy);
+    font-size: 1.5rem;
+  }
+
+  #feature-bank {
+    max-width: 1500px;
+    min-height: 150px;
+    margin: 0 auto 34px;
+    padding: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px dashed #adc4ec;
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(43, 74, 122, 0.08);
+  }
+
+  #feature-bank:empty::before {
+    content: "All cards have been placed.";
+    color: var(--muted-text);
+    font-style: italic;
+  }
+
+  .feature {
+    flex: 1 1 260px;
+    max-width: 430px;
+    padding: 15px 17px;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--blue);
+    border-radius: 13px;
+    color: var(--navy);
+    font-size: 0.98rem;
+    line-height: 1.45;
+    cursor: grab;
+    box-shadow: 0 5px 14px rgba(36, 65, 110, 0.1);
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .feature:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 22px rgba(36, 65, 110, 0.16);
+  }
+
+  .feature:active {
+    cursor: grabbing;
+    transform: scale(0.98);
+  }
+
+  .sdg-grid {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 22px;
+  }
+
+  .sdg-box {
+    position: relative;
+    min-height: 290px;
+    padding: 0;
+    overflow: hidden;
+    background: var(--card-background);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(42, 68, 108, 0.1);
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+
+  .sdg-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 34px rgba(42, 68, 108, 0.15);
+  }
+
+  .sdg-box h2 {
+    margin: 0;
+    padding: 20px 22px;
+    color: white;
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+
+  /* Official SDG colours */
+
+  .sdg-box:nth-child(1) h2 {
+    background: #e5243b;
+  }
+
+  .sdg-box:nth-child(2) h2 {
+    background: #dda63a;
+  }
+
+  .sdg-box:nth-child(3) h2 {
+    background: #4c9f38;
+  }
+
+  .sdg-box:nth-child(4) h2 {
+    background: #c5192d;
+  }
+
+  .sdg-box:nth-child(5) h2 {
+    background: #ff3a21;
+  }
+
+  .sdg-box:nth-child(6) h2 {
+    background: #26bde2;
+  }
+
+  .sdg-box:nth-child(7) h2 {
+    background: #bf8b2e;
+  }
+
+  .drop-zone {
+    min-height: 210px;
+    padding: 16px;
+    border: none;
+    border-radius: 0;
+    transition:
+      background 0.2s ease,
+      outline 0.2s ease;
+  }
+
+  .sdg-box .drop-zone:empty::before {
+    content: "Drop feature cards here";
+    display: grid;
+    place-items: center;
+    min-height: 175px;
+    padding: 20px;
+    border: 2px dashed #d2dceb;
+    border-radius: 14px;
+    color: #8795a9;
+    text-align: center;
+  }
+
+  .drag-over {
+    background: #e8f1ff;
+    outline: 3px solid #78a5f5;
+    outline-offset: -5px;
+  }
+
+  .sdg-box .feature {
+    max-width: none;
+    margin-bottom: 10px;
+  }
+
+  .correct {
+    border: 2px solid #299447;
+    border-left: 7px solid #299447;
+    background: #eaf8ee;
+  }
+
+  .correct::after {
+    content: " ✓";
+    color: #23833c;
+    font-weight: bold;
+  }
+
+  .incorrect {
+    border: 2px solid #d74343;
+    border-left: 7px solid #d74343;
+    background: #fff0f0;
+  }
+
+  .controls {
+    max-width: 1500px;
+    margin: 28px auto 50px;
+    padding: 26px 48px;
+    text-align: center;
+  }
+
+  button {
+    min-width: 175px;
+    padding: 14px 22px;
+    margin: 6px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 5px 13px rgba(31, 56, 99, 0.14);
+    transition:
+      transform 0.16s ease,
+      box-shadow 0.16s ease;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(31, 56, 99, 0.2);
+  }
+
+  #check-button {
+    background: linear-gradient(135deg, #1c62ef, #1746bf);
+    color: white;
+  }
+
+  #reset-button {
+    background: white;
+    color: var(--navy);
+    border: 1px solid var(--border);
+  }
+
+  #feedback {
+    min-height: 50px;
+    max-width: 750px;
+    margin: 22px auto 0;
+    padding: 14px 20px;
+    color: var(--navy);
+    background: #e7efff;
+    border-radius: 12px;
+    font-size: 1.08rem;
+    font-weight: 700;
+  }
+
+  #feedback:empty {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    body > h1 {
+      padding: 28px 20px 10px;
+      font-size: 2.5rem;
+      letter-spacing: -1px;
     }
 
-    h1,
-    .instructions {
-      text-align: center;
-    }
-
-    .instructions {
-      margin-bottom: 24px;
+    .instructions,
+    body > h2 {
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     #feature-bank {
-      min-height: 120px;
-      padding: 16px;
-      margin-bottom: 24px;
-      background: white;
-      border: 2px dashed #777;
-      border-radius: 10px;
-    }
-
-    .feature {
-      padding: 12px;
-      margin: 8px;
-      background: #ffffff;
-      border: 1px solid #999;
-      border-radius: 8px;
-      cursor: grab;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
-    }
-
-    .feature:active {
-      cursor: grabbing;
+      margin-left: 20px;
+      margin-right: 20px;
+      border-radius: 18px;
     }
 
     .sdg-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
-
-    .sdg-box {
-      min-height: 210px;
-      padding: 14px;
-      background: white;
-      border: 3px solid #555;
-      border-radius: 10px;
-    }
-
-    .sdg-box h2 {
-      margin-top: 0;
-      font-size: 1.1rem;
-    }
-
-    .drop-zone {
-      min-height: 145px;
-      padding: 6px;
-      border: 2px dashed #bbb;
-      border-radius: 8px;
-    }
-
-    .drag-over {
-      background: #eef7ff;
-    }
-
-    .correct {
-      border: 3px solid green;
-      background: #e8f5e9;
-    }
-
-    .incorrect {
-      border: 3px solid #c62828;
-      background: #ffebee;
+      padding: 0 20px;
+      grid-template-columns: 1fr;
     }
 
     .controls {
-      margin-top: 24px;
-      text-align: center;
+      padding: 22px 20px;
     }
 
     button {
-      padding: 12px 20px;
-      margin: 6px;
-      border: none;
-      border-radius: 7px;
-      font-size: 1rem;
-      cursor: pointer;
+      width: 100%;
+      margin: 6px 0;
     }
-
-    #check-button {
-      background: #146c94;
-      color: white;
-    }
-
-    #reset-button {
-      background: #555;
-      color: white;
-    }
-
-    #feedback {
-      min-height: 30px;
-      margin-top: 16px;
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
