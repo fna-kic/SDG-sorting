@@ -103,7 +103,7 @@
     color: var(--navy);
     font-size: 0.98rem;
     line-height: 1.45;
-    cursor: grab;
+    cursor: pointer;
     box-shadow: 0 5px 14px rgba(36, 65, 110, 0.1);
     transition:
       transform 0.18s ease,
@@ -117,7 +117,6 @@
   }
 
   .feature:active {
-    cursor: grabbing;
     transform: scale(0.98);
   }
 
@@ -563,7 +562,7 @@
         const card = document.createElement("div");
 
         card.className = "feature";
-        card.draggable = true;
+        card.draggable = false;
         card.id = `feature-${index}`;
         card.dataset.answer = feature.sdg;
         card.textContent = feature.text;
