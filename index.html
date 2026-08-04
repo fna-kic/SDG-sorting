@@ -385,17 +385,129 @@
     min-height: 125px;
   }
 }
+  /* Top application header */
+
+.site-header {
+  width: 100%;
+  padding: 14px 36px;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #d7e1f1;
+  box-shadow: 0 4px 18px rgba(42, 68, 108, 0.08);
+}
+
+.header-content {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sdg-wheel {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+
+.header-text {
+  flex: 1;
+}
+
+.header-title {
+  color: var(--navy);
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+
+.header-subtitle {
+  margin-top: 4px;
+  color: var(--muted-text);
+  font-size: 0.95rem;
+}
+
+.goal-badge {
+  padding: 10px 16px;
+  background: #e8f0ff;
+  border: 1px solid #c9dafb;
+  border-radius: 999px;
+  color: #2454ba;
+  font-size: 0.92rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Reduce the large hero area */
+
+body > h1 {
+  margin-top: 0;
+  padding-top: 34px;
+  padding-bottom: 8px;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+}
+
+body > h1::before {
+  font-size: 0.82rem;
+  margin-bottom: 10px;
+}
+
+.instructions {
+  padding-bottom: 24px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    padding: 12px 18px;
+  }
+
+  .sdg-wheel {
+    width: 52px;
+    height: 52px;
+  }
+
+  .header-title {
+    font-size: 1.1rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.78rem;
+  }
+
+  .goal-badge {
+    display: none;
+  }
+}
 </style>
 </head>
 
 <body>
+<header class="site-header">
+  <div class="header-content">
+    <img
+      src="sdg-wheel.png"
+      alt="Sustainable Development Goals colour wheel"
+      class="sdg-wheel"
+    >
 
+    <div class="header-text">
+      <div class="header-title">SDG Feature Sort</div>
+      <div class="header-subtitle">
+        VCE Health and Human Development
+      </div>
+    </div>
+
+    <div class="goal-badge">
+      Goals 1–6 and 12
+    </div>
+  </div>
+</header>
+  
   <h1>Sort the SDG Features</h1>
 
-  <p class="instructions">
-    Drag each feature into the Sustainable Development Goal it belongs to.
-    When you have sorted all the cards, select <strong>Check answers</strong>.
-  </p>
+<p class="instructions">
+  Select a feature card, then select the Sustainable Development Goal it belongs to.
+  When you have sorted all the cards, select <strong>Check answers</strong>.
+</p>
 
   <h2>Feature cards</h2>
   <div id="feature-bank" class="drop-zone"></div>
